@@ -1,0 +1,17 @@
+menu "Example Configuration"
+
+    choice EXAMPLE_FONT_TYPE
+        prompt "Chinese font support"
+        default EXAMPLE_FONT_IN_FW
+        help
+            ...
+
+        config EXAMPLE_FONT_IN_FW
+            bool "Build in fw"
+        config EXAMPLE_FONT_IN_PARTITION
+            bool "Put in a partition"
+        config EXAMPLE_FONT_IN_MMAP_ASSETS
+            bool "Put in a MMAP ASSETS"
+    endchoice
+
+endmenu

@@ -1,0 +1,13 @@
+version: "0.0.1"
+license: "Apache-2.0"
+description: font engine for LVGL
+url: https://github.com/udoudou/D2Toolbox/tree/master/components/d2_font
+repository: https://github.com/udoudou/D2Toolbox.git
+issues: https://github.com/udoudou/D2Toolbox/issues
+
+dependencies:
+  idf: ">=4.4.1"
+  lvgl/lvgl: ">=8.0.0"
+
+examples:
+  - path: ../../examples/d2_font

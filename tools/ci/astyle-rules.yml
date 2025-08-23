@@ -31,10 +31,9 @@ components_not_formatted_permanent:
   # - Generated files
   check: false
   include:
-    # Xtensa header files (generated)
-    - "/components/xtensa/esp32/"
-    # - "/components/xtensa/esp32s2/"
-    # - "/components/xtensa/esp32s3/"
+    # font files (generated)
+    - "examples/d2_font/main/d2_font_demo_14.c"
+    - "examples/d2_font/main/lvgl_font_demo_14.c"
     # - "/components/xtensa/include/xtensa/"
 
 docs:
