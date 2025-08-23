@@ -67,3 +67,6 @@ ignore:
   include:
     # - '!components/d2_no'
     - tools/ci/check_executables.py
+    - examples/d2_font/main/d2_font_demo_14.c
+    - examples/d2_font/main/lvgl_font_demo_14.c
+    - examples/d2_font/main/mmap_generate_fonts.h

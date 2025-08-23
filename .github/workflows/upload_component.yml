@@ -1,0 +1,21 @@
+name: Push components to https://components.espressif.com
+
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  upload_components:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          submodules: 'recursive'
+      - name: Upload components to the component registry
+        uses: espressif/upload-components-ci-action@v2
+        with:
+          components: |
+            components/d2_font
+          namespace: "udoudou"
+          api_token: ${{ secrets.IDF_COMPONENT_API_TOKEN }}

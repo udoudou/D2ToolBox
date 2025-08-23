@@ -1,0 +1,5 @@
+dependencies:
+  d2_font:
+    override_path: ../../../components/d2_font
+  lvgl/lvgl: 9.2.0
+  espressif/esp_mmap_assets: ^1.3.1~2
