@@ -6,7 +6,7 @@
 #include "d2_font.h"
 
 #include "string.h"
-#include "esp_rom_crc.h"
+#include "mbedtls/sha256.h"
 #include "esp_partition.h"
 #include "esp_heap_caps.h"
 #include "esp_log.h"
@@ -53,16 +53,24 @@ lv_font_t *d2_font_load_from_mem(const uint8_t *bin_ptr, size_t size)
     data += sizeof(uint32_t);
     const d2_font_fmt_txt_dsc_t *fdsc = (const d2_font_fmt_txt_dsc_t *)data;
 
-    /*crc*/
-    if (header_length + dsc_length + 4 > size) {
+    /*sha256*/
+    if (header_length + dsc_length + 32 > size) {
         ESP_LOGE(TAG, "Dsc_length error");
         return NULL;
     }
     data = bin_ptr + header_length + dsc_length;
-    uint32_t crc = *(uint32_t *)data;
-    uint32_t crc_calc = esp_rom_crc32_le(0, bin_ptr, header_length + dsc_length);
-    if (crc != crc_calc) {
-        ESP_LOGE(TAG, "CRC error");
+    uint8_t *sha256 = (uint8_t *)data;
+
+    uint8_t sha256_calc[32] = { 0 };
+    mbedtls_sha256_context sha256_ctx;
+    mbedtls_sha256_init(&sha256_ctx);
+    mbedtls_sha256_starts(&sha256_ctx, false);
+    mbedtls_sha256_update(&sha256_ctx, bin_ptr, header_length + dsc_length);
+    mbedtls_sha256_finish(&sha256_ctx, sha256_calc);
+    mbedtls_sha256_free(&sha256_ctx);
+
+    if (memcmp(sha256, sha256_calc, 32) != 0) {
+        ESP_LOGE(TAG, "SHA256 error");
         return NULL;
     }
 

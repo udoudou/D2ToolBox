@@ -14,7 +14,7 @@
 #include "esp_mmap_assets.h"
 
 #define MMAP_FONTS_FILES           1
-#define MMAP_FONTS_CHECKSUM        0x86FB
+#define MMAP_FONTS_CHECKSUM        0x9535
 
 enum MMAP_FONTS_LISTS {
     MMAP_FONTS_D2_FONT_DEMO_14_BIN = 0,        /*!< d2_font_demo_14.bin */
