@@ -304,7 +304,8 @@ void app_main(void)
         lv_style_set_text_font(&style_font, &d2_font_demo_14);
         // lv_style_set_text_font(&style_font, &lvgl_font_demo_14);
 #elif CONFIG_EXAMPLE_FONT_IN_PARTITION
-        lv_font_t *font = d2_font_load_from_partition("font");
+        lv_font_t *font;
+        d2_font_load_from_partition("font", &font);
         if (font) {
             ESP_LOGI(TAG, "Load font from partition successfully");
             lv_style_set_text_font(&style_font, font);
@@ -326,7 +327,8 @@ void app_main(void)
         ESP_ERROR_CHECK(mmap_assets_new(&config, &asset_handle));
         const void *mem = mmap_assets_get_mem(asset_handle, MMAP_FONTS_D2_FONT_DEMO_14_BIN);
         int size = mmap_assets_get_size(asset_handle, MMAP_FONTS_D2_FONT_DEMO_14_BIN);
-        lv_font_t *font = d2_font_load_from_mem(mem, size);
+        lv_font_t *font;
+        d2_font_load_from_mem(mem, size, &font);
         if (font) {
             ESP_LOGI(TAG, "Load font from mmap_assets successfully");
             lv_style_set_text_font(&style_font, font);
