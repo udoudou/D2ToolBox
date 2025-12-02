@@ -1,4 +1,4 @@
-version: "0.1.0"
+version: "0.2.0"
 license: "Apache-2.0"
 description: font engine for LVGL
 url: https://github.com/udoudou/D2Toolbox/tree/master/components/d2_font
