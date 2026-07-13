@@ -1,0 +1,12 @@
+version: "0.2.0"
+license: "Apache-2.0"
+description: wifi direct(p2p)
+url: https://github.com/udoudou/D2Toolbox/tree/master/components/d2_wifi_direct
+repository: https://github.com/udoudou/D2Toolbox.git
+issues: https://github.com/udoudou/D2Toolbox/issues
+
+dependencies:
+  idf: ">=4.4.1"
+
+examples:
+  - path: ../../examples/d2_wifi_direct

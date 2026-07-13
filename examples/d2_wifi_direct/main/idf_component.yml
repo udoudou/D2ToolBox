@@ -1,0 +1,3 @@
+dependencies:
+  d2_wifi_direct:
+    override_path: ../../../components/d2_wifi_direct
